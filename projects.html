@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>計畫 Projects | 海上智慧視覺感知實驗室</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="projects">
+<header class="site-header" id="site-header"></header>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>計畫</h1>
+    <p class="en">Projects</p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <section>
+      <h2>主持計畫<span class="en-sub">PI Research Projects</span></h2>
+      <div class="card-grid" id="project-list" style="grid-template-columns:1fr;"></div>
+      <p class="note-box" id="project-note"></p>
+    </section>
+
+    <section>
+      <h2>指導大專生研究計畫<span class="en-sub">Student-Advised Undergraduate Research Projects</span></h2>
+      <div id="student-project-list"></div>
+      <p class="note-box" id="student-project-note"></p>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="data/site.js"></script>
+<script src="data/projects.js"></script>
+<script src="assets/js/common.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var d = window.PROJECTS_DATA;
+  if (!d) return;
+  var sourceLabel = { NSTC_VERIFIED: "國科會查詢系統核實", CV_SELF_REPORTED: "履歷自陳・未經第三方查證" };
+
+  var visible = (d.projects || []).filter(function (p) { return p.status !== "draft"; });
+  var list = document.getElementById("project-list");
+  if (visible.length) {
+    list.innerHTML = visible.map(function (p) {
+      return '<div class="card">' +
+        '<span class="role-tag">' + p.year + '</span>' +
+        '<h3>' + p.title_zh + '</h3>' +
+        (p.title_en ? '<p class="en">' + p.title_en + '</p>' : '') +
+        (p.funder_zh ? '<p class="desc"><strong>經費來源：</strong>' + p.funder_zh + '</p>' : '') +
+        (p.executor_zh ? '<p class="desc"><strong>執行機關：</strong>' + p.executor_zh + '</p>' : '') +
+        (p.amount_zh ? '<p class="desc"><strong>經費：</strong>' + p.amount_zh + '</p>' : '') +
+        (p.desc_zh ? '<p class="desc">' + p.desc_zh + '</p>' : '') +
+        (p.keywords_zh ? '<p class="status">關鍵字：' + p.keywords_zh.join('、') + '</p>' : '') +
+        '<p class="status">' + (sourceLabel[p.source] || p.source || '') + '</p>' +
+        '</div>';
+    }).join("");
+  }
+  if (d.note_zh) {
+    document.getElementById("project-note").textContent = d.note_zh;
+  }
+
+  var studentList = document.getElementById("student-project-list");
+  var students = d.studentProjects || [];
+  if (students.length) {
+    studentList.innerHTML = students.map(function (p) {
+      return '<div class="pub-item">' +
+        '<div class="pub-year">' + p.year + '</div>' +
+        '<div class="pub-body">' +
+        '  <div class="pub-title">' + p.title_zh + '</div>' +
+        '  <div class="pub-authors">學生：' + p.student_zh + '　・　指導教授：詹益東</div>' +
+        '  <div class="pub-meta">計畫編號 ' + p.code + '　・　' + p.amount_zh + '</div>' +
+        '  <div class="pub-badges"><span class="badge doi-verified">' + (sourceLabel[p.source] || p.source) + '</span></div>' +
+        '</div></div>';
+    }).join("");
+  }
+  if (d.studentProjectsNote_zh) {
+    document.getElementById("student-project-note").textContent = d.studentProjectsNote_zh;
+  }
+});
+</script>
+</body>
+</html>

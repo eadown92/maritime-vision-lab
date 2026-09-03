@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>獎項榮譽 Awards | 海上智慧視覺感知實驗室</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="awards">
+<header class="site-header" id="site-header"></header>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>獎項榮譽</h1>
+    <p class="en">Awards &amp; Honors</p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <section>
+      <div id="award-list"></div>
+      <p class="note-box" id="award-note"></p>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="data/site.js"></script>
+<script src="data/awards.js"></script>
+<script src="assets/js/common.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var d = window.AWARDS_DATA;
+  if (!d) return;
+  document.getElementById("award-list").innerHTML = (d.awards || []).map(function (a) {
+    return '<div class="pub-item">' +
+      '<div class="pub-year">' + a.year + '</div>' +
+      '<div class="pub-body">' +
+      '  <div class="pub-title">' + a.title_zh + '</div>' +
+      '  <div class="pub-meta">' + a.title_en + '</div>' +
+      '</div></div>';
+  }).join("");
+  document.getElementById("award-note").textContent = d.note_zh || "";
+});
+</script>
+</body>
+</html>

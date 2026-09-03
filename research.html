@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>研究方向 Research | 海上智慧視覺感知實驗室</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="research">
+<header class="site-header" id="site-header"></header>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>研究方向</h1>
+    <p class="en">Research</p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <section>
+      <p id="research-intro" style="font-size:1.05rem;"></p>
+      <p id="research-intro-en" style="color:var(--muted);"></p>
+    </section>
+
+    <section>
+      <h2 id="heading-approaches"></h2>
+      <div class="card-grid" id="research-areas"></div>
+    </section>
+
+    <section>
+      <h2>近期研究成果<span class="en-sub">Recent Research Highlights</span></h2>
+      <div id="recent-highlights"></div>
+      <p class="note-box" id="recent-highlights-note"></p>
+    </section>
+
+    <section>
+      <h2 id="heading-applications"></h2>
+      <div class="card-grid" id="application-areas"></div>
+      <p class="note-box" id="research-note"></p>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="data/site.js"></script>
+<script src="data/research.js"></script>
+<script src="assets/js/common.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var r = window.RESEARCH_DATA;
+  if (!r) return;
+
+  document.getElementById("research-intro").textContent = r.pageIntro.zh;
+  document.getElementById("research-intro-en").textContent = r.pageIntro.en;
+
+  document.getElementById("heading-approaches").innerHTML =
+    r.headings.approaches.zh + '<span class="en-sub">' + r.headings.approaches.en + '</span>';
+  document.getElementById("heading-applications").innerHTML =
+    r.headings.applications.zh + '<span class="en-sub">' + r.headings.applications.en + '</span>';
+
+  document.getElementById("research-areas").innerHTML = r.areas.map(function (a) {
+    return '<div class="card">' +
+      '<span class="role-tag">' + a.role + '</span>' +
+      '<h3>' + a.name_zh + '</h3>' +
+      '<p class="en">' + a.name_en + '</p>' +
+      '<p class="desc">' + a.desc_zh + '</p>' +
+      '<p class="status">' + a.status_zh + ' / ' + a.status_en + '</p>' +
+      '</div>';
+  }).join("");
+
+  document.getElementById("application-areas").innerHTML = r.applicationAreas.map(function (a) {
+    return '<div class="card">' +
+      '<h3>' + a.zh + '</h3>' +
+      '<p class="en">' + a.en + '</p>' +
+      (a.note_zh ? '<p class="desc">' + a.note_zh + '</p>' : '') +
+      '</div>';
+  }).join("");
+
+  document.getElementById("research-note").textContent = r.note_zh || "";
+
+  function escAttr(s) {
+    return String(s || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  }
+
+  function mediaBlock(h) {
+    var m = h.media;
+    if (!m) return '<div class="highlight-media"></div>';
+    var t = escAttr(h.title);
+    if (m.type === "video") {
+      if (m.youtubeId) {
+        return '<div class="highlight-media">' +
+          '<iframe class="yt-embed" src="https://www.youtube-nocookie.com/embed/' + m.youtubeId +
+          '" title="' + t + ' — Video Graphical Abstract" allowfullscreen loading="lazy"></iframe>' +
+          '<button type="button" class="media-zoom-btn" data-zoom-type="youtube" data-zoom-youtube="' + m.youtubeId +
+          '" data-zoom-title="' + t + '" aria-label="放大觀看影片">⤢ 放大</button>' +
+          '</div>';
+      }
+      return '<div class="highlight-media">' +
+        '<video src="' + m.src + '"' + (m.poster ? ' poster="' + m.poster + '"' : '') + ' controls preload="metadata"></video>' +
+        '<button type="button" class="media-zoom-btn" data-zoom-type="video" data-zoom-src="' + m.src +
+        '" data-zoom-poster="' + escAttr(m.poster) + '" data-zoom-title="' + t + '" aria-label="放大觀看影片">⤢ 放大</button>' +
+        '</div>';
+    }
+    // image
+    return '<div class="highlight-media">' +
+      '<img class="zoomable-img" src="' + m.src + '" alt="' + t + ' — representative figure" ' +
+      'data-zoom-type="image" data-zoom-src="' + m.src + '" data-zoom-title="' + t +
+      '" data-zoom-caption="' + escAttr(m.caption_zh) + '">' +
+      (m.caption_zh ? '<div class="caption">' + m.caption_zh + '</div>' : '') + '</div>';
+  }
+
+  var highlights = r.recentHighlights || [];
+  if (highlights.length) {
+    document.getElementById("recent-highlights").innerHTML = highlights.map(function (h) {
+      var summary = h.summary_zh
+        ? '<p class="summary">' + h.summary_zh + '</p>'
+        : '<p class="summary empty">研究成果簡述待負責人補充。</p>';
+      return '<div class="highlight-card">' +
+        mediaBlock(h) +
+        '<div class="highlight-body">' +
+        '  <h3>' + h.title + '</h3>' +
+        '  <div class="venue">' + h.year + ' ・ ' + h.venue +
+        (h.doi ? ' ・ <a href="https://doi.org/' + h.doi + '" target="_blank" rel="noopener">doi.org/' + h.doi + '</a>' : '') +
+        '  </div>' +
+        summary +
+        '</div></div>';
+    }).join("");
+  }
+  document.getElementById("recent-highlights-note").textContent = r.recentHighlightsNote_zh || "";
+
+  // --- Lightbox: click a highlight image/video/YouTube thumbnail to view enlarged ---
+  var lightbox = document.getElementById("lightbox");
+  var lightboxContent = document.getElementById("lightbox-content");
+
+  function openLightbox(el) {
+    var type = el.getAttribute("data-zoom-type");
+    var title = el.getAttribute("data-zoom-title") || "";
+    var html = "";
+    if (type === "image") {
+      var caption = el.getAttribute("data-zoom-caption");
+      html = '<img src="' + el.getAttribute("data-zoom-src") + '" alt="' + title + '">' +
+        (caption ? '<div class="lightbox-caption">' + caption + '</div>' : '');
+    } else if (type === "video") {
+      html = '<video src="' + el.getAttribute("data-zoom-src") + '"' +
+        (el.getAttribute("data-zoom-poster") ? ' poster="' + el.getAttribute("data-zoom-poster") + '"' : '') +
+        ' controls autoplay></video>';
+    } else if (type === "youtube") {
+      html = '<iframe src="https://www.youtube-nocookie.com/embed/' + el.getAttribute("data-zoom-youtube") +
+        '?autoplay=1" title="' + title + '" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>';
+    } else {
+      return;
+    }
+    lightboxContent.innerHTML = html;
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.hidden = true;
+    lightboxContent.innerHTML = "";
+    document.body.style.overflow = "";
+  }
+
+  document.getElementById("recent-highlights").addEventListener("click", function (e) {
+    var target = e.target.closest("[data-zoom-type]");
+    if (!target) return;
+    e.preventDefault();
+    openLightbox(target);
+  });
+  document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
+  });
+});
+</script>
+
+<div class="lightbox-overlay" id="lightbox" hidden>
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="關閉">&times;</button>
+  <div class="lightbox-content" id="lightbox-content"></div>
+</div>
+</body>
+</html>

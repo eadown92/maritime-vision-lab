@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>聯絡我們 Contact | 海上智慧視覺感知實驗室</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="contact">
+<header class="site-header" id="site-header"></header>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>聯絡我們</h1>
+    <p class="en">Contact</p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <section>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-item">
+            <div class="label">單位 Institution</div>
+            <div class="value" id="c-institution"></div>
+          </div>
+          <div class="contact-item">
+            <div class="label">地址 Address</div>
+            <div class="value" id="c-address"></div>
+          </div>
+        </div>
+        <div>
+          <div class="contact-item">
+            <div class="label">Email</div>
+            <div class="value" id="c-email"></div>
+          </div>
+          <div class="contact-item">
+            <div class="label">電話 Phone</div>
+            <div class="value" id="c-phone"></div>
+          </div>
+          <div class="contact-item">
+            <div class="label">傳真 Fax</div>
+            <div class="value" id="c-fax"></div>
+          </div>
+          <div class="contact-item">
+            <div class="label">辦公室 Office</div>
+            <div class="value" id="c-office"></div>
+          </div>
+        </div>
+      </div>
+      <p class="note-box" id="c-note"></p>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="data/site.js"></script>
+<script src="assets/js/common.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var s = window.SITE_DATA;
+  if (!s) return;
+  var c = s.contact || {};
+  document.getElementById("c-institution").textContent = s.institution.zh + " / " + s.institution.en;
+  document.getElementById("c-address").innerHTML = c.address_zh
+    ? c.address_zh + (c.address_en ? '<br><span style="color:var(--muted);font-size:.85rem;">' + c.address_en + '</span>' : '')
+    : "（待補）";
+  document.getElementById("c-email").innerHTML = c.email ? '<a href="mailto:' + c.email + '">' + c.email + '</a>' : "（待補）";
+  document.getElementById("c-phone").textContent = c.phone || "（待補）";
+  document.getElementById("c-fax").textContent = c.fax || "（待補）";
+  document.getElementById("c-office").textContent = c.office || "（待補）";
+  document.getElementById("c-note").textContent = c.note_zh || "";
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>論文著作 Publications | 海上智慧視覺感知實驗室</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="publications">
+<header class="site-header" id="site-header"></header>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>論文著作</h1>
+    <p class="en">Publications</p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <section>
+      <p id="pub-summary" style="font-size:1.02rem;"></p>
+
+      <div class="pub-group">
+        <h3>期刊論文 <span style="color:var(--muted);font-weight:400;font-size:.85rem;">Journal Articles</span></h3>
+        <div id="journal-list"></div>
+      </div>
+
+      <div class="pub-group">
+        <h3>會議論文 <span style="color:var(--muted);font-weight:400;font-size:.85rem;">Conference Papers</span></h3>
+        <div id="conference-list"></div>
+      </div>
+
+      <div class="pub-group">
+        <h3>專書 <span style="color:var(--muted);font-weight:400;font-size:.85rem;">Books</span></h3>
+        <div id="book-list"></div>
+      </div>
+
+      <div class="pub-group">
+        <h3>專書論文 <span style="color:var(--muted);font-weight:400;font-size:.85rem;">Book Chapters</span></h3>
+        <div id="chapter-list"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>專利<span class="en-sub">Patents（不列入論文/計畫清單 — kept separate from publications and projects）</span></h2>
+      <table class="patent-table">
+        <thead>
+          <tr><th>證書號 No.</th><th>類型 Type</th><th>名稱 Title</th><th>發明人 / 專利權人</th><th>國別 Country</th></tr>
+        </thead>
+        <tbody id="patent-rows"></tbody>
+      </table>
+    </section>
+
+    <section>
+      <p class="note-box" id="pub-source-note"></p>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="data/site.js"></script>
+<script src="data/publications.js"></script>
+<script src="data/patents.js"></script>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/page-publications.js"></script>
+</body>
+</html>
