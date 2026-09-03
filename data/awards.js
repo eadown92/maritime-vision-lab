@@ -1,5 +1,5 @@
 window.AWARDS_DATA = {
-  "note_zh": "資料來源：詹益東個人履歷 MOST CV_20250503.pdf「AWARD AND HONOR」章節。原文為英文條列，中文為輔助翻譯，如與正式獎狀名稱有出入請以獎狀原文為準。",
+  "note_zh": "",
   "awards": [
     { "year": "2023", "title_zh": "指導學生參加中山大學第 6 屆全院專題競賽暨成果展，獲特優", "title_en": "Adviser, 6th All-Topic Competition and Exhibition at NSYSU, the High Distinction Award" },
     { "year": "2023", "title_zh": "海軍軍官學校優良教師", "title_en": "Outstanding Teacher Award (R.O.C.N.)" },

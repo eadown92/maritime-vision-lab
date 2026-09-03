@@ -1,5 +1,5 @@
 window.PUBLICATIONS_DATA = {
-  "source": "基礎資料來源：教師著作列表（個人教師表現.pdf），2026/08/31 匯出。8 篇期刊論文之 DOI 已於 2026/09 逐篇透過 CrossRef（api.crossref.org）查詢核實，標題以出版社公開資料為準（如與機構紀錄不同，差異原因記錄於該筆 titleNote 欄位，僅供內部查考，不於頁面顯示）。新增/修改論文請直接編輯本檔案，並在該筆記錄標註依據。",
+  "source": "",
   "journalArticles": [
     {
       "id": "j-2026-pgme",

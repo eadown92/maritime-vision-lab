@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }).join("");
   }
 
-  document.getElementById("pub-source-note").textContent =
-    (pubs.source || "") + (pats ? " " + pats.source : "");
+  var sourceNote = ((pubs.source || "") + " " + ((pats && pats.source) || "")).trim();
+  document.getElementById("pub-source-note").textContent = sourceNote;
+  document.getElementById("pub-source-note").hidden = !sourceNote;
 });

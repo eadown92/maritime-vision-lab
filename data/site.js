@@ -22,7 +22,7 @@ window.SITE_DATA = {
     "en": "Our research brings together computer vision and machine learning for maritime visual perception, with an emphasis on edge and embedded implementation."
   },
   "contact": {
-    "note_zh": "資料來源：義守大學資訊工程學系教師名錄頁面（https://csie.isu.edu.tw/teachers/faculty），2026/09 查閱。",
+    "note_zh": "",
     "note_en": "Source: I-Shou University CSIE faculty directory, retrieved 2026/09.",
     "address_zh": "840301 高雄市大樹區學城路一段1號 資訊工程學系",
     "address_en": "Dept. of Computer Science and Information Engineering, No. 1, Sec. 1, Syuecheng Rd., Dashu Dist., Kaohsiung City 840301, Taiwan (R.O.C.)",

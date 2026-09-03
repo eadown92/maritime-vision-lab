@@ -1,5 +1,5 @@
 window.PROJECTS_DATA = {
-  "note_zh": "資料來源：(1) 國家科學及技術委員會補助研究計畫查詢系統（https://wsts.nstc.gov.tw，主持人：詹益東，查詢畫面截圖 2026/09），(2) 詹益東個人履歷 MOST CV_20250503.pdf 及 ISU_中文履歷表_定稿_詹益東.docx。國防部補助計畫未收錄於國科會查詢系統，故標記來源為履歷自陳，未經第三方公開資料庫查證。",
+  "note_zh": "",
   "projects": [
     {
       "id": "proj-2020-autonomous-ship-vision",
@@ -61,7 +61,7 @@ window.PROJECTS_DATA = {
       "status": "published"
     }
   ],
-  "studentProjectsNote_zh": "資料來源：國家科學及技術委員會「大專學生研究計畫」查詢系統（wsts.nstc.gov.tw，執行機關：海軍軍官學校電機系）查詢畫面，2026/09 查閱。僅收錄指導教授為「詹益東」之計畫；同一查詢結果中另有 1 筆 107 年度計畫（學生：雷傑茗）指導教授為李仁軍，非本實驗室 PI，故不收錄。",
+  "studentProjectsNote_zh": "",
   "studentProjects": [
     {
       "id": "stu-2021-hou-usv-vision",

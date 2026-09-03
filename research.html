@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }).join("");
 
   document.getElementById("research-note").textContent = r.note_zh || "";
+  document.getElementById("research-note").hidden = !r.note_zh;
 
   function escAttr(s) {
     return String(s || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
@@ -129,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }).join("");
   }
   document.getElementById("recent-highlights-note").textContent = r.recentHighlightsNote_zh || "";
+  document.getElementById("recent-highlights-note").hidden = !r.recentHighlightsNote_zh;
 
   // --- Lightbox: click a highlight image/video/YouTube thumbnail to view enlarged ---
   var lightbox = document.getElementById("lightbox");

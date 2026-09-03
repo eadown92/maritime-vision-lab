@@ -41,7 +41,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   var d = window.PROJECTS_DATA;
   if (!d) return;
-  var sourceLabel = { NSTC_VERIFIED: "國科會查詢系統核實", CV_SELF_REPORTED: "履歷自陳・未經第三方查證" };
 
   var visible = (d.projects || []).filter(function (p) { return p.status !== "draft"; });
   var list = document.getElementById("project-list");
@@ -56,13 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
         (p.amount_zh ? '<p class="desc"><strong>經費：</strong>' + p.amount_zh + '</p>' : '') +
         (p.desc_zh ? '<p class="desc">' + p.desc_zh + '</p>' : '') +
         (p.keywords_zh ? '<p class="status">關鍵字：' + p.keywords_zh.join('、') + '</p>' : '') +
-        '<p class="status">' + (sourceLabel[p.source] || p.source || '') + '</p>' +
         '</div>';
     }).join("");
   }
-  if (d.note_zh) {
-    document.getElementById("project-note").textContent = d.note_zh;
-  }
+  document.getElementById("project-note").textContent = d.note_zh || "";
+  document.getElementById("project-note").hidden = !d.note_zh;
 
   var studentList = document.getElementById("student-project-list");
   var students = d.studentProjects || [];
@@ -74,13 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
         '  <div class="pub-title">' + p.title_zh + '</div>' +
         '  <div class="pub-authors">學生：' + p.student_zh + '　・　指導教授：詹益東</div>' +
         '  <div class="pub-meta">計畫編號 ' + p.code + '　・　' + p.amount_zh + '</div>' +
-        '  <div class="pub-badges"><span class="badge doi-verified">' + (sourceLabel[p.source] || p.source) + '</span></div>' +
         '</div></div>';
     }).join("");
   }
-  if (d.studentProjectsNote_zh) {
-    document.getElementById("student-project-note").textContent = d.studentProjectsNote_zh;
-  }
+  document.getElementById("student-project-note").textContent = d.studentProjectsNote_zh || "";
+  document.getElementById("student-project-note").hidden = !d.studentProjectsNote_zh;
 });
 </script>
 </body>

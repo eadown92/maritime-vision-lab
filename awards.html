@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
       '</div></div>';
   }).join("");
   document.getElementById("award-note").textContent = d.note_zh || "";
+  document.getElementById("award-note").hidden = !d.note_zh;
 });
 </script>
 </body>

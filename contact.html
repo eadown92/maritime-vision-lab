@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("c-fax").textContent = c.fax || "（待補）";
   document.getElementById("c-office").textContent = c.office || "（待補）";
   document.getElementById("c-note").textContent = c.note_zh || "";
+  document.getElementById("c-note").hidden = !c.note_zh;
 });
 </script>
 </body>

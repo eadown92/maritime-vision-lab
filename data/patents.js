@@ -1,5 +1,5 @@
 window.PATENTS_DATA = {
-  "source": "資料來源：教師著作列表（個人教師表現.pdf），2026/08/31 匯出。專利不列入論文或計畫清單。",
+  "source": "",
   "patents": [
     { "id": "p-i800372", "number": "I800372", "kind": "發明", "title": "Vision-assisted navigation system for unmanned surface vehicles", "inventor": "Yi-Tung Chan", "assignee": "海軍軍官學校", "country": "中華民國" },
     { "id": "p-i795069", "number": "I795069", "kind": "發明", "title": "Foreground detection device for maritime video surveillance", "inventor": "Yi-Tung Chan", "assignee": "海軍軍官學校", "country": "中華民國" },

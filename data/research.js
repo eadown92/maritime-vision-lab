@@ -65,8 +65,8 @@ window.RESEARCH_DATA = {
       "en": "Maritime Vehicle Classification"
     }
   ],
-  "note_zh": "歷史上的「水域安全（Water Safety）」相關研究內容予以保留於實驗室發展歷程中，但目前不作為主要對外宣傳項目。",
-  "recentHighlightsNote_zh": "摘要文字由 Claude 閱讀各篇論文全文後以 250 字內摘寫，供快速瀏覽，正式引用請以原文摘要為準。每篇僅呈現單一媒體：有影音摘要（VGA）的論文顯示影片，其餘顯示論文中一張代表性圖表（來源：PI個人資料/期刊論文 各篇資料夾）。VGA 優先以 YouTube 內嵌播放（youtubeId 欄位），尚未設定時退回播放本機 mp4 檔案。",
+  "note_zh": "",
+  "recentHighlightsNote_zh": "",
   "recentHighlights": [
     {
       "id": "hl-2026-pgme",
