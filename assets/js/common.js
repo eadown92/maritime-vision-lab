@@ -9,9 +9,8 @@
 
     mount.innerHTML =
       '<div class="header-inner">' +
-      '  <a class="brand" href="index.html">' +
-      '    <span class="brand-zh">' + s.labName.zh + '</span>' +
-      '    <span class="brand-en">' + s.labName.en + '</span>' +
+      '  <a class="brand mvplab-site-brand mvplab-site-brand--header" href="index.html" aria-label="' + s.labName.zh + ' / ' + s.labName.en + '">' +
+      '    <img src="assets/brand/header/mvplab-header-compact-light.svg" alt="' + s.labName.zh + ' — ' + s.labName.en + '">' +
       '  </a>' +
       '  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>' +
       '  <nav class="main-nav" id="mainNav"><ul>' +
@@ -35,9 +34,14 @@
     if (!mount || !window.SITE_DATA) return;
     var s = window.SITE_DATA;
     mount.innerHTML =
-      '<div class="wrap">' +
-      '  <span>' + s.footer.zh + '</span>' +
-      '  <span>' + s.footer.en + '</span>' +
+      '<div class="wrap footer-inner">' +
+      '  <div class="footer-brand mvplab-site-brand mvplab-site-brand--footer">' +
+      '    <img src="assets/brand/footer/mvplab-footer-open-dark.svg" alt="Maritime Visual Perception Lab — I-Shou University">' +
+      '  </div>' +
+      '  <div class="footer-meta">' +
+      '    <span>' + s.footer.zh + '</span>' +
+      '    <span>' + s.footer.en + '</span>' +
+      '  </div>' +
       '</div>';
   }
 

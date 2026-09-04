@@ -1,7 +1,7 @@
 window.SITE_DATA = {
   "labName": {
-    "zh": "海上智慧視覺感知實驗室",
-    "en": "Maritime Intelligent Visual Perception Laboratory"
+    "zh": "海上視覺感知實驗室",
+    "en": "Maritime Visual Perception Lab"
   },
   "institution": {
     "zh": "義守大學 資訊工程學系",
@@ -32,8 +32,8 @@ window.SITE_DATA = {
     "office": "科技大樓3707E"
   },
   "footer": {
-    "zh": "© 2026 海上智慧視覺感知實驗室・義守大學資訊工程學系",
-    "en": "© 2026 Maritime Intelligent Visual Perception Laboratory, Dept. of Computer Science and Information Engineering, I-Shou University"
+    "zh": "© 2026 海上視覺感知實驗室・義守大學資訊工程學系",
+    "en": "© 2026 Maritime Visual Perception Lab, Dept. of Computer Science and Information Engineering, I-Shou University"
   }
 }
 ;
