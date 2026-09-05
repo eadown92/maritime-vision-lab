@@ -5,28 +5,32 @@
 
 ## 目錄結構
 
+以下列出目前維護上需要知道的主要結構，非逐檔案完整清單（例如 `assets/brand/` 底下實際有 20 個品牌資產檔案，這裡不逐一列出）：
+
 ```
 02_網站原始碼/
-├── index.html          首頁
-├── about.html           關於實驗室
-├── research.html        研究方向
-├── publications.html    論文著作 + 專利
-├── people.html          成員
-├── projects.html        計畫
-├── awards.html           獎項榮譽
-├── contact.html         聯絡我們
+├── index.html / about.html / research.html / publications.html /
+│   people.html / projects.html / awards.html / contact.html   共 8 個公開路由頁面
 ├── assets/
-│   ├── css/style.css     版面樣式（一般不需修改）
-│   ├── img/pi.jpg         PI 大頭照
-│   └── js/                版面渲染邏輯（一般不需修改）
-└── data/                  ★ 內容資料，日常更新只改這裡
-    ├── site.js            實驗室名稱、導覽列、首頁文案、聯絡資訊
-    ├── research.js         研究方向（Phase 2 已由負責人確認之文字，勿隨意更動）
-    ├── publications.js    19 篇論文（期刊/會議/專書/專書論文）
-    ├── patents.js          7 項專利（獨立列示，不算入論文/計畫）
-    ├── people.js           PI 與成員名單
-    ├── projects.js         計畫清單
-    └── awards.js           獎項榮譽清單
+│   ├── brand/              ★ 鎖定的品牌資產（header/footer/favicon/logo/mark），
+│   │                         詳見 WEBSITE_STATUS.md，非必要不重繪、不新增
+│   ├── img/                論文代表圖、PI 大頭照等靜態圖片
+│   ├── video/               論文 VGA 影片（多數已改用 YouTube 內嵌，本機檔案為備援）
+│   ├── css/                 版面樣式（一般不需修改）
+│   └── js/                  版面渲染邏輯（一般不需修改）
+├── data/                    ★ 內容資料，日常更新只改這裡
+│   ├── site.js              實驗室名稱、導覽列、首頁文案、聯絡資訊
+│   ├── research.js          研究方向（Phase 2 已由負責人確認之文字，勿隨意更動）
+│   ├── publications.js      19 篇論文（期刊/會議/專書/專書論文）
+│   ├── patents.js           7 項專利（獨立列示，不算入論文/計畫）
+│   ├── people.js            PI 與成員名單
+│   ├── projects.js          計畫清單
+│   └── awards.js            獎項榮譽清單
+├── scripts/
+│   └── import-members-csv.mjs   Google 表單成員資料一鍵匯入腳本
+├── MEMBER_IMPORT_GUIDE.md   新成員資料收集與匯入說明
+├── 維護手冊.md               歷史資料來源與方法論存查（不對外顯示，內部查考用）
+└── WEBSITE_STATUS.md        ★ 目前正式部署狀態、品牌版本、維護規則速查
 ```
 
 ## 如何新增一篇論文
@@ -62,16 +66,24 @@ node scripts/import-members-csv.mjs "已發布的Google試算表CSV網址"
 
 **手動方式**：也可以直接編輯 `data/people.js` 的 `members` 陣列，格式與 `pi` 陣列相同。
 
-## 如何補上聯絡資訊
+## 聯絡資訊維護
 
-編輯 `data/site.js` 的 `contact` 區塊，填入 `email`、`phone`、`address_zh` 等欄位。
-目前為空白佔位，**正式對外發布前請務必補齊**。
+聯絡資訊維護於 `data/site.js` 的 `contact` 區塊（`email`、`phone`、`fax`、`address_zh`／`address_en`、`office` 等欄位）。
+正式網站目前已填妥並上線使用，如有異動（例如換辦公室、電話），直接編輯這個區塊即可。
 
-## 本機預覽
+## 本機預覽與正式部署
 
-直接用瀏覽器開啟 `index.html` 即可（所有資料以 `<script>` 載入，不需要伺服器）。
-若要之後部署到正式網址，把整個 `02_網站原始碼/` 資料夾內容上傳到任何靜態網站空間即可
-（校內網頁空間、GitHub Pages、Netlify 等皆可）。
+**本機預覽**：直接用瀏覽器開啟 `index.html` 即可（所有資料以 `<script>` 載入，不需要伺服器）。
+
+**正式部署**：本網站目前部署於 GitHub Pages：
+
+- 正式網址：<https://eadown92.github.io/maritime-vision-lab/>
+- Repository：[`eadown92/maritime-vision-lab`](https://github.com/eadown92/maritime-vision-lab)
+
+更新方式為：確認本機預覽無誤後，`git add` → `git commit` → `git push` 到 `main`，
+GitHub Pages 會自動重新部署，不需要額外的建置或上傳步驟。
+
+目前部署狀態、品牌版本與維護規則速查請見 [WEBSITE_STATUS.md](WEBSITE_STATUS.md)。
 
 ## 資料來源與注意事項
 

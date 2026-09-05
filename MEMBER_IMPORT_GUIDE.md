@@ -58,7 +58,9 @@ node scripts/import-members-csv.mjs "C:\Users\CJSCOPE\Downloads\成員回覆.csv
 ## 四、確認與發布
 
 1. 用瀏覽器打開 `people.html` 檢查新資料顯示是否正常。
-2. 確認無誤後，依照網站的部署方式更新到正式網址（例如 GitHub Pages：`git add` → `git commit` → `git push`）。
+2. 本網站目前部署於 GitHub Pages（<https://eadown92.github.io/maritime-vision-lab/>）。
+   確認無誤後執行 `git add` → `git commit` → `git push`，推送到 `main` 即可更新 repository
+   並觸發 GitHub Pages 目前的自動部署流程，不需要任何額外的上傳或建置步驟。
 
 ---
 
