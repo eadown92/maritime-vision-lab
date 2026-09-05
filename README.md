@@ -1,4 +1,4 @@
-# 海上智慧視覺感知實驗室網站（輕量版）
+# 海上視覺感知實驗室網站（輕量版）
 
 純靜態網站，不需要 Node.js、不需要 build 工具。所有可更新內容都集中在 `data/` 資料夾，
 維護者只要編輯 `data/` 內的 `.js` 檔案即可更新網站內容，不需要碰版面（HTML/CSS）程式碼。
@@ -75,8 +75,8 @@ node scripts/import-members-csv.mjs "已發布的Google試算表CSV網址"
 
 ## 資料來源與注意事項
 
-- **所屬單位**：義守大學資訊工程學系（I-Shou University, Dept. of Computer Science and
-  Information Engineering）。**注意**：`個人教師表現.pdf` 的頁首雖印有「資訊工程學系 詹益東」，
+- **所屬單位**：義守大學資訊工程學系(所)（I-Shou University, Dept. of Information
+  Engineering）。**注意**：`個人教師表現.pdf` 的頁首雖印有「資訊工程學系 詹益東」，
   但未直接列出校名；早期版本誤用專利受讓人「海軍軍官學校」推斷所屬單位，已於 2026/09 依
   義守大學資訊工程學系教師名錄頁面（https://csie.isu.edu.tw/teachers/faculty）與 PI 履歷更正。
   海軍軍官學校為 PI 先前（2017–約2025）任職單位，非現職。
